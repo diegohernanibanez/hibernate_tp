@@ -18,21 +18,14 @@ public class CuotaABM {
         return dao.traer(p);
     }
 
-    public int agregar(int nroCuota, LocalDate fechaVencimiento, double saldoPendiente, double amortizacion,
-        double interesCuota, double cuota, double deuda, Prestamo prestamo){
-        Cuota c = new Cuota(nroCuota, fechaVencimiento, saldoPendiente, amortizacion, interesCuota, cuota, deuda, prestamo);
-        // Se deberia poder agregar cuotas?
-        // Que logica deberia tener?
-        return dao.agregar(c);
-    }
-
-    public void modificar(Cuota c) {
+    public void modificarCuota(Cuota c) {
         dao.actualizar(c);
     }
 
     // La logica de pagar deberia estar en el ABM
     // Deberia tener un exception al hacer el get?
     public void pagarCuota(Prestamo p) throws Exception{
+        PrestamoABM prestamoABM = new PrestamoABM();
         List<Cuota> cuotas = traerCuota(p);
         Cuota c = new Cuota();
         for (Cuota cuota : cuotas) {
@@ -48,6 +41,11 @@ public class CuotaABM {
         if(c.getFechaVencimiento().isBefore(hoy)){
             c.setPunitorios(0.02);
         }
-        modificar(c);
+        
+        if(p.getCantCuotas() == c.getNroCuota()){
+            p.setCancelado(true);
+        }
+        prestamoABM.modificarPrestamo(p);
+        modificarCuota(c);
     }
 }

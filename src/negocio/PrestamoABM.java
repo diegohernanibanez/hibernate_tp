@@ -58,10 +58,8 @@ public class PrestamoABM {
         return dao.agregar(p);
     }
 
-    public void modificar(Prestamo c) {
+    public void modificarPrestamo(Prestamo p) {
         // Pendiente implementar lógica de negocio
-        // Al momento de modificar deberia modificar cada una de las cuotas??
-
-        dao.actualizar(c);
+        dao.actualizar(p);
     }
 }

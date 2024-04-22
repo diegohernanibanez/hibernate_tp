@@ -7,7 +7,7 @@ import negocio.PrestamoABM;
 public interface TestPagarCuota {
     public static void main(String[] args) {
         PrestamoABM prestamoAbm = new PrestamoABM();
-        long idPrestamo = 20;
+        long idPrestamo = 22;
         Prestamo prestamo = prestamoAbm.traerPrestamo(idPrestamo);
         CuotaABM abm = new CuotaABM();
         try {
