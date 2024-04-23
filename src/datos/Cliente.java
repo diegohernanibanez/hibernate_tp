@@ -10,22 +10,12 @@ public class Cliente {
     private int dni;
     private LocalDate fechaDeNacimiento;
     private boolean baja;
-    private Contacto contacto;
     private Set<Prestamo> prestamos;
 
     public Cliente() {
     }
     // siempre hay que implementar el constructor vacío
     // no va el id en el constructor por ser autoincrementable
-
-    public Cliente(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento, Contacto contacto) {
-        super();
-        this.apellido = apellido;
-        this.nombre = nombre;
-        this.dni = dni;
-        this.fechaDeNacimiento = fechaDeNacimiento;
-        this.baja = false;
-    }
 
     public Cliente(String apellido, String nombre, int dni, LocalDate fechaDeNacimiento) {
         super();
@@ -85,14 +75,6 @@ public class Cliente {
         this.baja = baja;
     }
 
-    public Contacto getContacto() {
-        return contacto;
-    }
-
-    public void setContacto(Contacto contacto) {
-        this.contacto = contacto;
-    }
-
     public Set<Prestamo> getPrestamos() {
         return prestamos;
     }
@@ -104,6 +86,6 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente [idCliente=" + idCliente + ", apellido=" + apellido + ", nombre=" + nombre + ", dni=" +
-                dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", baja=" + baja + ", contacto=" + contacto + "]";
+                dni + ", fechaDeNacimiento=" + fechaDeNacimiento + ", baja=" + baja + "]";
     }
 }

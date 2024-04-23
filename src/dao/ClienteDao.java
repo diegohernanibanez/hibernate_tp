@@ -101,19 +101,6 @@ public class ClienteDao {
         return lista;
     }
 
-    public Cliente traerClienteYContacto(long idCliente) throws HibernateException {
-        Cliente objeto = null;
-        try {
-            iniciaOperacion();
-            String hql = "from Cliente c inner join fetch c.contacto where c.idCliente = :idCliente";
-            objeto = (Cliente) session.createQuery(hql).setParameter("idCliente",
-                    idCliente).uniqueResult();
-        } finally {
-            session.close();
-        }
-        return objeto;
-    }
-
     public Cliente traerClienteYPrestamos(long idCliente) throws HibernateException {
         Cliente objeto = null;
         try {
